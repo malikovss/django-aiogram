@@ -1,0 +1,4 @@
+aiogram==3.0.0b7
+Django==4.1.7
+python-dotenv==1.0.0
+uvicorn==0.20.0

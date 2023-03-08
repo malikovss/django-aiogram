@@ -7,6 +7,8 @@ from django.conf import settings
 from django.core.asgi import ASGIHandler as _ASGIHandler
 from django.utils.module_loading import import_string
 
+from main.settings.base import DJANGO_SETTINGS_MODULE
+
 
 class ASGIHandler(_ASGIHandler):
     async def __call__(self, scope, receive, send):
@@ -50,6 +52,6 @@ def get_asgi_application():
     return ASGIHandler()
 
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'main.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', DJANGO_SETTINGS_MODULE)
 
 application = get_asgi_application()
