@@ -13,7 +13,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone = PhoneNumberField(_("phone"), unique=True)
     password = models.CharField(_("password"), max_length=128, blank=True)
     first_name = models.CharField(_("first name"), max_length=150, blank=True)
-    last_name = models.CharField(_("last name"), max_length=150, blank=True)
+    last_name = models.CharField(_("last name"), max_length=150, null=True, blank=True)
     birth_date = models.DateField(_("birth date"), null=True, blank=True)
     language = models.CharField(max_length=15, choices=settings.LANGUAGES, default='uz')
     telegram_id = models.BigIntegerField(null=True, blank=True, unique=True)

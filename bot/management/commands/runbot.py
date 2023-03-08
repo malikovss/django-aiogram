@@ -1,7 +1,6 @@
 from django.core.management import BaseCommand
 
-from bot.apps import on_startup, on_shutdown
-from bot.misc import dp, bot
+from bot.misc import dp, bot, on_startup, on_shutdown
 
 
 class Command(BaseCommand):

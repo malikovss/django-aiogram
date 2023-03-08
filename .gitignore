@@ -3,3 +3,4 @@ venv
 cdn_local
 .env
 __pycache__/
+db.sqlite3
