@@ -2,6 +2,7 @@ from aiogram import Dispatcher, Bot
 from aiogram.client.session.aiohttp import AiohttpSession
 from django.conf import settings
 
+from bot.helpers import get_webhook_url
 from bot.routers import router
 
 dp = Dispatcher()
@@ -14,12 +15,13 @@ dp.include_router(router)
 
 async def on_startup():
     webhook_info = await bot.get_webhook_info()
-    if settings.BOT_WEBHOOK:
-        webhook_url = f'{settings.BOT_WEBHOOK}/bot/{settings.BOT_TOKEN}/'
-        if webhook_url != webhook_info:
-            await bot.set_webhook(url=webhook_url)
-    elif webhook_info.url:
-        await bot.delete_webhook()
+    webhook_url = get_webhook_url()
+    if webhook_url != webhook_info.url:
+        await bot.set_webhook(
+            url=webhook_url,
+            allowed_updates=dp.resolve_used_update_types(),
+            drop_pending_updates=True
+        )
 
 
 async def on_shutdown():

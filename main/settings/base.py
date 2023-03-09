@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 load_dotenv(BASE_DIR / '.env')
+
+HOST = os.environ['HOST']
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -133,17 +135,19 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Bot settings
 BOT_TOKEN = os.environ['BOT_TOKEN']
-BOT_WEBHOOK = os.environ['BOT_WEBHOOK']
-LIFESPAN_CONTEXT = 'main.lifespan.lifespan_context'
+BOT_WEBHOOK_PATH = "bot-process-updates"
 
+LIFESPAN_CONTEXT = 'main.lifespan.lifespan_context'
 DJANGO_SETTINGS_MODULE = 'main.settings.dev' if DEBUG else 'main.settings.prod'
 
+# Logging
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

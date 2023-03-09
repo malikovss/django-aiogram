@@ -34,6 +34,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
     USERNAME_FIELD = "phone"
+    REQUIRED_FIELDS = ('telegram_id',)
 
     class Meta:
         ordering = ('-id',)
