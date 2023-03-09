@@ -139,6 +139,7 @@ MEDIA_URL = 'media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 BOT_TOKEN = os.environ['BOT_TOKEN']
+BOT_WEBHOOK = os.environ['BOT_WEBHOOK']
 LIFESPAN_CONTEXT = 'main.lifespan.lifespan_context'
 
 DJANGO_SETTINGS_MODULE = 'main.settings.dev' if DEBUG else 'main.settings.prod'

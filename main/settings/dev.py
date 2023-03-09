@@ -4,11 +4,8 @@ ALLOWED_HOSTS = [
     '*'
 ]
 
-AUTH_PASSWORD_VALIDATORS = []
-
 STATIC_ROOT = BASE_DIR / 'cdn_local' / 'staticfiles'
 MEDIA_ROOT = BASE_DIR / 'cdn_local' / 'media'
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
