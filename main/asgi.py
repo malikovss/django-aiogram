@@ -9,6 +9,9 @@ from django.utils.module_loading import import_string
 
 from main.settings.base import DJANGO_SETTINGS_MODULE
 
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', DJANGO_SETTINGS_MODULE)
+django.setup(set_prefix=False)
+
 
 class ASGIHandler(_ASGIHandler):
     async def __call__(self, scope, receive, send):
@@ -40,17 +43,4 @@ class ASGIHandler(_ASGIHandler):
             await send({"type": "lifespan.shutdown.complete"})
 
 
-def get_asgi_application():
-    """
-    The public interface to Django's ASGI support. Return an ASGI 3 callable.
-
-    Avoids making django.core.handlers.ASGIHandler a public API, in case the
-    internal implementation changes or moves in the future.
-    """
-    django.setup(set_prefix=False)
-    return ASGIHandler()
-
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', DJANGO_SETTINGS_MODULE)
-
-application = get_asgi_application()
+application = ASGIHandler()
