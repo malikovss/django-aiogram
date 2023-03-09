@@ -3,7 +3,7 @@
 ## Steps
 
 - Click [Use this template](https://github.com/malikovss/django-aiogram/generate)
-- Copy [.env.example](.env.example) to `.env` and change variables to your
+- Copy [.env.example](.env.example) to `.env` and change variables to yours
 - Create virtual environment and install requirements
 - Run `python manage.py migrate`
 - Create super user `python manage.py createsuperuser`
