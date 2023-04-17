@@ -1,7 +1,7 @@
 from aiogram import Router, types
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 from bot.filters.states import Registration
 from users.models import User

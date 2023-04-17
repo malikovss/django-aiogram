@@ -1,7 +1,6 @@
 from aiogram import BaseMiddleware
 from aiogram.types import Update
 from django.utils.translation import activate
-from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from typing import Callable, Dict, Awaitable, Any, Optional
 from users.models import User
