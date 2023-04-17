@@ -8,7 +8,7 @@ from .models import User
 @admin.register(User)
 class UserAdmin(_UserAdmin):
     fieldsets = (
-        (None, {"fields": ("phone", "password", 'telegram_id')}),
+        (None, {"fields": ("phone", "password", 'telegram_id', 'language')}),
         (_("Personal info"), {"fields": ("first_name", "last_name")}),
         (
             _("Permissions"),
@@ -35,6 +35,6 @@ class UserAdmin(_UserAdmin):
         ),
     )
 
-    list_display = ("id", "phone", "first_name", "last_name", "is_staff")
+    list_display = ("id", "phone", "first_name", "last_name", "is_staff", "language")
     search_fields = ("phone", "first_name", "last_name")
     ordering = ("phone",)
