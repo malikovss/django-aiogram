@@ -9,20 +9,9 @@ class AuthenticationMiddleware(BaseMiddleware):
                        event: Update,
                        data: Dict[str, Any]
                        ) -> Any:
-        if event.message:
-            bot_user = event.message.from_user
-        elif event.callback_query:
-            bot_user = event.callback_query.from_user
-        elif event.inline_query:
-            bot_user = event.inline_query.from_user
-        elif event.chosen_inline_result:
-            bot_user = event.chosen_inline_result.from_user
-        elif event.shipping_query:
-            bot_user = event.shipping_query.from_user
-        elif event.pre_checkout_query:
-            bot_user = event.pre_checkout_query.from_user
-        else:
-            return handler(event, data)
+        bot_user = data['event_from_user']
+        if bot_user is None:
+            return await handler(event, data)
 
         user, _ = await User.objects.aget_or_create(telegram_id=bot_user.id,
                                                     defaults={
